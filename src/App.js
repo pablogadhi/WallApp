@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import React, { useState } from "react";
+
+import InputContainer from "./containers/InputContainer";
+import PostList from "./features/posts/PostList";
+import TopBar from "./containers/TopBar";
+import AuthModal from "./features/auth/AuthModal";
 
 function App() {
+  const [authType, setAuthType] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopBar showLogin={() => setAuthType("login")}></TopBar>
+      <div className="Content">
+        <PostList></PostList>
+        <InputContainer></InputContainer>
+      </div>
+      {authType !== "" ? (
+        <AuthModal
+          closeModal={() => setAuthType("")}
+          type={authType}
+        ></AuthModal>
+      ) : null}
     </div>
   );
 }

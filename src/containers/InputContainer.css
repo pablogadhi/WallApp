@@ -1,0 +1,15 @@
+.InputForm {
+  display: flex;
+  height: 4rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.PostInput {
+  flex-grow: 2;
+  resize: none;
+}
+
+.SubmitPostBtn {
+  margin: 0.5rem;
+}

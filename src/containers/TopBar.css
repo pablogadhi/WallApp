@@ -1,0 +1,10 @@
+.TopBar {
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem;
+}
+
+.AuthButton {
+  margin: 0.2rem;
+}
