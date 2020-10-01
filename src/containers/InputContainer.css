@@ -1,7 +1,19 @@
+.InputContainer {
+  display: flex;
+  bottom: 0;
+  justify-content: center;
+  /* position: fixed;
+  width: 100%; */
+}
+
+.InputFieldset {
+  border: none;
+  width: 60%;
+}
+
 .InputForm {
   display: flex;
   height: 4rem;
-  margin-bottom: 1rem;
   width: 100%;
 }
 

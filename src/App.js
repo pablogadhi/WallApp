@@ -15,14 +15,14 @@ function App() {
       <TopBar showLogin={() => setAuthType("login")}></TopBar>
       <div className="Content">
         <PostList></PostList>
-        <InputContainer></InputContainer>
       </div>
-      {authType !== "" ? (
+      <InputContainer></InputContainer>
+      {authType !== "" && (
         <AuthModal
           closeModal={() => setAuthType("")}
           type={authType}
         ></AuthModal>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -1,31 +1,37 @@
 import "./AuthModal.css";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
-import { useTransition, animated } from "react-spring";
+import { CSSTransition } from "react-transition-group";
 
 const AuthModal = (props) => {
-  const transitions = useTransition([0], (item) => item, {
-    from: { top: "-60%" },
-    enter: { top: "20%" },
-    leave: { top: "-60%" },
-  });
+  const [animTrigger, setAnimTrigger] = useState(false);
+
+  useEffect(() => {
+    setAnimTrigger(true);
+  }, []);
 
   return (
     <div className="AuthModal">
-      {transitions.map(({ item, key, styleProps }) => (
-        <animated.div
-          key={key}
-          style={styleProps}
-          className="AuthFormContainer"
-        >
-          {console.log(key)}
-          <button className="AuthClosingBtn" onClick={props.closeModal}>
+      <CSSTransition
+        in={animTrigger}
+        timeout={300}
+        classNames="AuthAnimContainer"
+        unmountOnExit
+        onExited={props.closeModal}
+      >
+        <div className="AuthFormContainer">
+          <button
+            className="AuthClosingBtn"
+            onClick={() => setAnimTrigger(false)}
+          >
             Close
           </button>
-          {props.type === "login" ? <LoginForm></LoginForm> : null}
-        </animated.div>
-      ))}
+          {props.type === "login" ? (
+            <LoginForm closeModal={() => setAnimTrigger(false)}></LoginForm>
+          ) : null}
+        </div>
+      </CSSTransition>
     </div>
   );
 };
