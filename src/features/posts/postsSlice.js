@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllPosts } from "../../api/client";
+import { getAllPosts, makeNewPost } from "../../api/client";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", getAllPosts);
+export const createPost = createAsyncThunk("posts/createPost", makeNewPost);
 
 const postsSlice = createSlice({
   name: "posts",
@@ -26,6 +27,9 @@ const postsSlice = createSlice({
     [fetchPosts.rejected]: (state, action) => {
       state.status = "failed";
       // state.error = action.error.message;
+    },
+    [createPost.fulfilled]: (state, action) => {
+      state.list.push(action.payload);
     },
   },
 });

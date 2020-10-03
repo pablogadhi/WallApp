@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { authenticate } from "../../api/client";
+import { authenticate, signUp } from "../../api/client";
 
 export const authUser = createAsyncThunk("auth/authUser", authenticate);
+export const registerUser = createAsyncThunk("auth/registerUser", signUp);
 
 const initialState = {
   username: "",
   token: "",
-  status: "empty",
+  loginStatus: "empty",
+  signupStatus: "empty",
 };
 
 const authSlice = createSlice({
@@ -14,24 +16,35 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     stateCleaned: (state) => initialState,
+    signupStatusReseted: (state) => {
+      state.signupStatus = "empty";
+    },
   },
   extraReducers: {
     [authUser.pending]: (state, action) => {
-      state.status = "authenticating";
+      state.loginStatus = "authenticating";
     },
     [authUser.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      console.log(action.payload);
+      state.loginStatus = "succeeded";
       state.username = action.payload.username;
       state.token = action.payload.token;
     },
     [authUser.rejected]: (state, action) => {
-      state.status = "failed";
+      state.loginStatus = "failed";
+    },
+    [registerUser.pending]: (state, action) => {
+      state.signupStatus = "creating";
+    },
+    [registerUser.fulfilled]: (state, action) => {
+      state.signupStatus = "succeeded";
+    },
+    [registerUser.rejected]: (state, action) => {
+      state.signupStatus = "failed";
     },
   },
 });
 
-export const { stateCleaned } = authSlice.actions;
+export const { stateCleaned, signupStatusReseted } = authSlice.actions;
 
 export const selectAuth = (state) => state.auth;
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Form from "../../components/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAuth, authUser } from "./authSlice";
 
@@ -9,31 +10,20 @@ const LoginForm = (props) => {
   const authInfo = useSelector(selectAuth);
   const dispatch = useDispatch();
 
+  const formItems = [
+    { label: "Username:", type: "text", stateSetter: setUsername },
+    { label: "Password:", type: "password", stateSetter: setPassword },
+  ];
+
   return (
-    <form className="AuthForm">
-      <label className="FormItem">
-        User Name:
-        <input
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
-      </label>
-      <label className="FormItem">
-        Password:
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-      </label>
-      <button
-        type="button"
-        className="FormBtn"
-        onClick={() => dispatch(authUser({ username, password }))}
-      >
-        Login
-      </button>
-      {authInfo.status === "succeeded" ? props.closeModal() : null}
-    </form>
+    <div>
+      <Form
+        items={formItems}
+        submitText="Login"
+        submit={() => dispatch(authUser({ data: { username, password } }))}
+      ></Form>
+      {authInfo.loginStatus === "succeeded" && props.closeModal()}
+    </div>
   );
 };
 

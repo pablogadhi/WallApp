@@ -7,6 +7,7 @@ import authReducer from "../features/auth/authSlice";
 const persistConfig = {
   key: "auth",
   storage,
+  blacklist: ["signupStatus"],
 };
 
 export const store = configureStore({

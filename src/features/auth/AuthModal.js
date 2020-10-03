@@ -1,7 +1,8 @@
-import "./AuthModal.css";
+import styles from "./Auth.module.css";
 
 import React, { useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import { CSSTransition } from "react-transition-group";
 
 const AuthModal = (props) => {
@@ -12,24 +13,33 @@ const AuthModal = (props) => {
   }, []);
 
   return (
-    <div className="AuthModal">
+    <div className={styles.AuthModal}>
       <CSSTransition
         in={animTrigger}
         timeout={300}
-        classNames="AuthAnimContainer"
+        classNames={{
+          enter: styles.AuthAnimContainerEnter,
+          enterActive: styles.AuthAnimContainerEnterActive,
+          exit: styles.AuthAnimContainerExit,
+          exitActive: styles.AuthAnimContainerExitActive,
+        }}
         unmountOnExit
         onExited={props.closeModal}
       >
-        <div className="AuthFormContainer">
+        <div className={styles.AuthFormContainer}>
           <button
-            className="AuthClosingBtn"
+            className={styles.AuthClosingBtn}
             onClick={() => setAnimTrigger(false)}
           >
             Close
           </button>
           {props.type === "login" ? (
             <LoginForm closeModal={() => setAnimTrigger(false)}></LoginForm>
-          ) : null}
+          ) : (
+            <RegisterForm
+              closeModal={() => setAnimTrigger(false)}
+            ></RegisterForm>
+          )}
         </div>
       </CSSTransition>
     </div>

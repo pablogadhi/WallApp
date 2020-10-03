@@ -1,0 +1,77 @@
+.PostList {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/* Fix overflow ignoring bottom padding on firefox */
+.PostList:after {
+  content: "";
+  display: block;
+  padding-bottom: 1rem;
+}
+
+.FetchError {
+  align-self: center;
+  color: #ccc;
+}
+
+.PostContainer {
+  border: 2px solid #eee;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.PostContent {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  flex-grow: 2;
+  margin: 0;
+  padding: 1rem;
+  white-space: pre-wrap;
+}
+
+.PostInfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PostInfoContainer > * {
+  margin: 0.7rem;
+  margin-bottom: 0;
+}
+
+.PostCreator {
+  display: flex;
+  bottom: 0;
+  justify-content: center;
+}
+
+.PostFormFieldset {
+  border: none;
+  width: 60%;
+}
+
+.PostForm {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+}
+
+.PostInput {
+  flex-grow: 2;
+  resize: none;
+}
+
+.SubmitPostBtn {
+  margin: 0.5rem;
+}

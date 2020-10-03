@@ -1,4 +1,4 @@
-import "./TopBar.css";
+import styles from "./TopBar.module.css";
 
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,10 +11,12 @@ const TopBar = (props) => {
 
   const authButtons = (
     <div>
-      <button className="AuthButton" onClick={props.showLogin}>
+      <button className={styles.AuthButton} onClick={props.showLogin}>
         Login
       </button>
-      <button className="AuthButton">SignUp</button>
+      <button className={styles.AuthButton} onClick={props.showSignUp}>
+        SignUp
+      </button>
     </div>
   );
 
@@ -24,16 +26,16 @@ const TopBar = (props) => {
   };
 
   const userDisplay = (
-    <div className="LoggedMenu">
-      <h4 className="UsernameDisplay">{authInfo.username}</h4>
-      <button className="AuthButton" onClick={logout}>
+    <div className={styles.LoggedMenu}>
+      <h4 className={styles.UsernameDisplay}>{authInfo.username}</h4>
+      <button className={styles.AuthButton} onClick={logout}>
         Logout
       </button>
     </div>
   );
 
   return (
-    <div className="TopBar">
+    <div className={styles.TopBar}>
       {authInfo.token === "" ? authButtons : userDisplay}
     </div>
   );

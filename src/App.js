@@ -2,9 +2,9 @@ import "./App.css";
 
 import React, { useState } from "react";
 
-import InputContainer from "./containers/InputContainer";
+import TopBar from "./components/TopBar";
 import PostList from "./features/posts/PostList";
-import TopBar from "./containers/TopBar";
+import PostCreator from "./features/posts/PostCreator";
 import AuthModal from "./features/auth/AuthModal";
 
 function App() {
@@ -12,11 +12,14 @@ function App() {
 
   return (
     <div className="App">
-      <TopBar showLogin={() => setAuthType("login")}></TopBar>
+      <TopBar
+        showLogin={() => setAuthType("login")}
+        showSignUp={() => setAuthType("signup")}
+      ></TopBar>
       <div className="Content">
         <PostList></PostList>
       </div>
-      <InputContainer></InputContainer>
+      <PostCreator></PostCreator>
       {authType !== "" && (
         <AuthModal
           closeModal={() => setAuthType("")}

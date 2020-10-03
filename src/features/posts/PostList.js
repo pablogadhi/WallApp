@@ -1,4 +1,5 @@
-import "./PostList.css";
+import styles from "./Posts.module.css";
+
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts, selectStatus, fetchPosts } from "./postsSlice";
@@ -19,10 +20,10 @@ const PostList = () => {
 
   useEffect(() => {
     endRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [status]);
+  }, [posts]);
 
   const postComponents = posts.map((post, idx) => (
-    <Post content={post.content} time={post.time} key={idx}></Post>
+    <Post data={post} key={idx}></Post>
   ));
 
   const listContent = () => {
@@ -30,12 +31,12 @@ const PostList = () => {
       case "succeeded":
         return postComponents;
       default:
-        return <h4 className="FetchError">Failed to fetch posts...</h4>;
+        return <h4 className={styles.FetchError}>Failed to fetch posts...</h4>;
     }
   };
 
   return (
-    <div className="PostList">
+    <div className={styles.PostList}>
       {listContent()}
       <div ref={endRef}></div>
     </div>
