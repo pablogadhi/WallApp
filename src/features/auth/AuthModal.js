@@ -5,6 +5,11 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { CSSTransition } from "react-transition-group";
 
+/**
+ * The modal component used to handle both authentication forms.
+ * @param {function} props.closeModal Function that changes the state to close the modal
+ * @param {string} props.type The modal type, it can be either "login" or "signup"
+ */
 const AuthModal = (props) => {
   const [animTrigger, setAnimTrigger] = useState(false);
 

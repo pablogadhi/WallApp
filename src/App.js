@@ -7,6 +7,9 @@ import PostList from "./features/posts/PostList";
 import PostCreator from "./features/posts/PostCreator";
 import AuthModal from "./features/auth/AuthModal";
 
+/**
+ * The app's main container.
+ */
 function App() {
   const [authType, setAuthType] = useState("");
 

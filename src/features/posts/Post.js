@@ -2,6 +2,11 @@ import styles from "./Posts.module.css";
 
 import React from "react";
 
+/**
+ *
+ * Component used to render a Post with its content, date, and the username of the user who posted it.
+ * @param {object} props.data The data object returned by the API with the structure {content: string, time: string, posted_by: string}
+ */
 const Post = (props) => {
   const dateTime = new Date(props.data.time);
 

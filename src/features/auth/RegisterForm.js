@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { registerUser, selectAuth, signupStatusReseted } from "./authSlice";
 import Form from "../../components/Form";
 
+/**
+ * Form used to sign up.
+ * @param {function} props.closeModal Function that closes the auth modal
+ */
 const RegisterForm = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");

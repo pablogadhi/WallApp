@@ -3,6 +3,10 @@ import Form from "../../components/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAuth, authUser } from "./authSlice";
 
+/**
+ * Form used to login.
+ * @param {function} props.closeModal Function that closes the auth modal
+ */
 const LoginForm = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

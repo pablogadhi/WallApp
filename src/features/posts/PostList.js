@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts, selectStatus, fetchPosts } from "./postsSlice";
 import Post from "./Post";
 
+/**
+ * Component used to render the list of posts.
+ */
 const PostList = () => {
   const posts = useSelector(selectAllPosts);
   const status = useSelector(selectStatus);

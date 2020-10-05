@@ -19,6 +19,7 @@ const PostCreator = () => {
       >
         <form className={styles.PostForm}>
           <textarea
+            value={message}
             className={styles.PostInput}
             placeholder={
               authInfo.token === ""
@@ -30,14 +31,15 @@ const PostCreator = () => {
           <button
             className={styles.SubmitPostBtn}
             type="button"
-            onClick={() =>
+            onClick={() => {
               dispatch(
                 createPost({
                   data: { content: message },
                   headers: { Authorization: `Token ${authInfo.token}` },
                 })
-              )
-            }
+              );
+              setMessage("");
+            }}
           >
             Post
           </button>
