@@ -9,6 +9,7 @@ import FormItem from "./FormItem";
  *                           used to populate the form
  * @param {function} props.submit Function to call with the submit button
  * @param {string} props.submitText Test to display on the submit button
+ * @param {function} props.loading Boolean used to display de loading spinner
  *
  */
 const Form = (props) => {
@@ -25,9 +26,19 @@ const Form = (props) => {
     <form className={styles.Form}>
       {items}
       <div className={styles.ErrorMsg}>{props.errorMsg}</div>
-      <button type="button" className={styles.FormBtn} onClick={props.submit}>
-        {props.submitText}
-      </button>
+      <div className={styles.SubmitContainer}>
+        {props.loading && <div className={styles.SubmitLoader} />}
+        <div className={styles.FormBtnContainer}>
+          <button
+            type="button"
+            className={styles.FormBtn}
+            onClick={props.submit}
+            disabled={props.loading}
+          >
+            {props.submitText}
+          </button>
+        </div>
+      </div>
     </form>
   );
 };

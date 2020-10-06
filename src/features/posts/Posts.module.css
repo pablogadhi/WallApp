@@ -1,10 +1,10 @@
 .PostList {
-  border: 2px solid #ccc;
+  border: 2px solid #235789;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   flex-grow: 2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-top: 1rem;
   overflow: auto;
   padding: 1rem;
@@ -23,7 +23,7 @@
 }
 
 .PostContainer {
-  border: 2px solid #eee;
+  border: 2px solid #bdbdbd;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .PostContent {
-  border: 2px solid #eee;
+  border: 2px solid #e0e0e0;
   border-radius: 10px;
   flex-grow: 2;
   margin: 0;
@@ -59,6 +59,7 @@
 .PostFormFieldset {
   border: none;
   width: 60%;
+  margin: 0.5rem;
 }
 
 .PostForm {
@@ -74,4 +75,6 @@
 
 .SubmitPostBtn {
   margin: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

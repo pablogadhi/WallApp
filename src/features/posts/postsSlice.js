@@ -7,7 +7,6 @@ export const createPost = createAsyncThunk("posts/createPost", makeNewPost);
 export const initialState = {
   list: [],
   status: "empty",
-  error: null,
 };
 
 const postsSlice = createSlice({
@@ -24,7 +23,6 @@ const postsSlice = createSlice({
     },
     [fetchPosts.rejected]: (state, action) => {
       state.status = "failed";
-      // state.error = action.error.message;
     },
     [createPost.fulfilled]: (state, action) => {
       state.list.push(action.payload);

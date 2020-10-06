@@ -47,6 +47,7 @@ const TopBar = (props) => {
 
   return (
     <div className={styles.TopBar}>
+      <h1 className={styles.Title}>Wall App</h1>
       {authInfo.token === "" ? authButtons : userDisplay}
     </div>
   );

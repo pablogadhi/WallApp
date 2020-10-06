@@ -28,6 +28,7 @@ const LoginForm = (props) => {
         errorMsg={
           authInfo.loginStatus === "failed" ? "Wrong username or password" : ""
         }
+        loading={authInfo.loginStatus === "authenticating"}
       ></Form>
       {authInfo.loginStatus === "succeeded" && props.closeModal()}
     </div>

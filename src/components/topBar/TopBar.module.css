@@ -1,17 +1,20 @@
 .TopBar {
-  border: 2px solid #ccc;
-  background-color: white;
+  background-color: #235789;
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.36);
   display: flex;
-  justify-content: flex-end;
-  padding: 0.8rem;
-  /* position: fixed; */
-  /* top: 0; */
-  /* width: 100%; */
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+.Title {
+  color: #fff;
+  margin: 0;
 }
 
 .AuthButton {
   display: inline-block;
   margin: 0.2rem;
+  margin-right: 0.5rem;
 }
 
 .LoggedMenu {
@@ -19,5 +22,8 @@
 }
 
 .UsernameDisplay {
+  align-items: center;
+  color: white;
+  display: flex;
   margin: 0.4rem;
 }

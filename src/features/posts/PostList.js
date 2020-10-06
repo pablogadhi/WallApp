@@ -33,6 +33,8 @@ const PostList = () => {
     switch (status) {
       case "succeeded":
         return postComponents;
+      case "loading":
+        return <h4 className={styles.FetchError}>Loading...</h4>;
       default:
         return <h4 className={styles.FetchError}>Failed to fetch posts...</h4>;
     }

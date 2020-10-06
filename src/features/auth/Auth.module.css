@@ -39,6 +39,15 @@
 
 .AuthClosingBtn {
   align-self: flex-end;
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: none;
+  color: black;
   right: 0;
   position: absolute;
+  margin: 0.3rem;
+}
+
+.AuthClosingBtn:hover {
+  background-color: #eee;
 }

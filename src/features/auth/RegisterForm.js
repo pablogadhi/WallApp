@@ -68,6 +68,7 @@ const RegisterForm = (props) => {
           dispatch(registerUser({ data: { email, username, password } }))
         }
         errorMsg={evalError()}
+        loading={authInfo.signupStatus === "creating"}
       ></Form>
       {authInfo.signupStatus === "succeeded" && close()}
     </div>
