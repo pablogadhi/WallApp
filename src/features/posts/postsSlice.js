@@ -4,18 +4,16 @@ import { getAllPosts, makeNewPost } from "../../api/client";
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", getAllPosts);
 export const createPost = createAsyncThunk("posts/createPost", makeNewPost);
 
+export const initialState = {
+  list: [],
+  status: "empty",
+  error: null,
+};
+
 const postsSlice = createSlice({
   name: "posts",
-  initialState: {
-    list: [],
-    status: "empty",
-    error: null,
-  },
-  reducers: {
-    postAdded(state, action) {
-      state.list.push(action.payload);
-    },
-  },
+  initialState,
+  reducers: {},
   extraReducers: {
     [fetchPosts.pending]: (state, action) => {
       state.status = "loading";

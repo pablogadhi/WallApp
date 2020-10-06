@@ -12,8 +12,9 @@ import FormItem from "./FormItem";
  *
  */
 const Form = (props) => {
-  const items = props.items.map((item) => (
+  const items = props.items.map((item, index) => (
     <FormItem
+      key={index}
       label={item.label}
       type={item.type}
       stateSetter={item.stateSetter}

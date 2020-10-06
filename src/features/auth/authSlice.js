@@ -4,7 +4,7 @@ import { authenticate, signUp } from "../../api/client";
 export const authUser = createAsyncThunk("auth/authUser", authenticate);
 export const registerUser = createAsyncThunk("auth/registerUser", signUp);
 
-const initialState = {
+export const initialState = {
   username: "",
   token: "",
   loginStatus: "empty",

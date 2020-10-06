@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { registerUser, selectAuth, signupStatusReseted } from "./authSlice";
-import Form from "../../components/Form";
+import Form from "../../components/form/Form";
 
 /**
  * Form used to sign up.

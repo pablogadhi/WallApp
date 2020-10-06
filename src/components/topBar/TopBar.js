@@ -2,7 +2,7 @@ import styles from "./TopBar.module.css";
 
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAuth, stateCleaned } from "../features/auth/authSlice";
+import { selectAuth, stateCleaned } from "../../features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
 
 /**

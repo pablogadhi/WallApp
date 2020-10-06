@@ -2,7 +2,7 @@ import "./App.css";
 
 import React, { useState } from "react";
 
-import TopBar from "./components/TopBar";
+import TopBar from "./components/topBar/TopBar";
 import PostList from "./features/posts/PostList";
 import PostCreator from "./features/posts/PostCreator";
 import AuthModal from "./features/auth/AuthModal";
