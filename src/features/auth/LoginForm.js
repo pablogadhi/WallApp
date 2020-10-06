@@ -25,6 +25,9 @@ const LoginForm = (props) => {
         items={formItems}
         submitText="Login"
         submit={() => dispatch(authUser({ data: { username, password } }))}
+        errorMsg={
+          authInfo.loginStatus === "failed" ? "Wrong username or password" : ""
+        }
       ></Form>
       {authInfo.loginStatus === "succeeded" && props.closeModal()}
     </div>

@@ -1,6 +1,8 @@
 import styles from "./Auth.module.css";
 
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { statusReset } from "./authSlice";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { CSSTransition } from "react-transition-group";
@@ -12,6 +14,7 @@ import { CSSTransition } from "react-transition-group";
  */
 const AuthModal = (props) => {
   const [animTrigger, setAnimTrigger] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setAnimTrigger(true);
@@ -29,7 +32,10 @@ const AuthModal = (props) => {
           exitActive: styles.AuthAnimContainerExitActive,
         }}
         unmountOnExit
-        onExited={props.closeModal}
+        onExited={() => {
+          dispatch(statusReset());
+          props.closeModal();
+        }}
       >
         <div className={styles.AuthFormContainer}>
           <button

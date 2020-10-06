@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import { render, screen } from "../test-utils";
+import { render, screen } from "../../test-utils";
 
 describe("form component", () => {
   it("should display a FormItem for each object on its item list", () => {

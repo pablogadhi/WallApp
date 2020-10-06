@@ -14,7 +14,7 @@ const clientConfig = {
  *                             This must be an object with valid axios configuration keys.
  * @returns {async function} The resulting async function.
  */
-const request = (method, url) => async (requestData = {}) => {
+const request = (method, url) => async (requestData = {}, thunkApi) => {
   try {
     const config = {
       ...clientConfig,
@@ -25,8 +25,7 @@ const request = (method, url) => async (requestData = {}) => {
     const response = await axios.request(config);
     return response.data;
   } catch (error) {
-    console.error(error);
-    throw error;
+    return thunkApi.rejectWithValue(error.response.data);
   }
 };
 

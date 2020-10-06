@@ -1,6 +1,6 @@
 import React from "react";
-import { initialState } from "../features/auth/authSlice";
-import { render, screen } from "../test-utils";
+import { initialState } from "../../features/auth/authSlice";
+import { render, screen } from "../../test-utils";
 import TopBar from "./TopBar";
 
 const dummyAuthState = {

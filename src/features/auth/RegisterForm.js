@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { registerUser, selectAuth, signupStatusReseted } from "./authSlice";
+import { registerUser, selectAuth, statusReset } from "./authSlice";
 import Form from "../../components/form/Form";
 
 /**
@@ -16,10 +16,28 @@ const RegisterForm = (props) => {
   const authInfo = useSelector(selectAuth);
   const dispatch = useDispatch();
 
+  /**
+   * Returns a new function that cleans the signupStatus and
+   * sets the local state with the setter passed to it.
+   * @param {function} setter A function that sets a state
+   */
+  const setterAndClean = (setter) => (newValue) => {
+    dispatch(statusReset());
+    setter(newValue);
+  };
+
   const formItems = [
-    { label: "Email:", type: "email", stateSetter: setEmail },
-    { label: "Username:", type: "text", stateSetter: setUsername },
-    { label: "Password:", type: "password", stateSetter: setPassword },
+    { label: "Email:", type: "email", stateSetter: setterAndClean(setEmail) },
+    {
+      label: "Username:",
+      type: "text",
+      stateSetter: setterAndClean(setUsername),
+    },
+    {
+      label: "Password:",
+      type: "password",
+      stateSetter: setterAndClean(setPassword),
+    },
     {
       label: "Confirm password:",
       type: "password",
@@ -28,8 +46,17 @@ const RegisterForm = (props) => {
   ];
 
   const close = () => {
-    dispatch(signupStatusReseted());
+    dispatch(statusReset());
     props.closeModal();
+  };
+
+  const evalError = () => {
+    if (password !== confirmPassword) {
+      return "Passwords don't match";
+    } else if (authInfo.signupStatus === "failed") {
+      return authInfo.signupError;
+    }
+    return "";
   };
 
   return (
@@ -40,6 +67,7 @@ const RegisterForm = (props) => {
         submit={() =>
           dispatch(registerUser({ data: { email, username, password } }))
         }
+        errorMsg={evalError()}
       ></Form>
       {authInfo.signupStatus === "succeeded" && close()}
     </div>

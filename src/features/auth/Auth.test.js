@@ -2,15 +2,15 @@ import authReducer, {
   authUser,
   initialState,
   stateCleaned,
-  signupStatusReseted,
+  statusReset,
 } from "./authSlice";
 
 describe("auth reducer", () => {
   const dummyState = {
+    ...initialState,
     username: "testuser",
     token: "#8452testtoken7411",
     loginStatus: "succeeded",
-    signupStatus: initialState.signupStatus,
   };
 
   it("should set the auth info", () => {
@@ -26,12 +26,9 @@ describe("auth reducer", () => {
     expect(authReducer(dummyState, stateCleaned)).toEqual(initialState);
   });
 
-  it("should clean the signupStatus", () => {
+  it("should clean the signupStatus and loginStatus", () => {
     expect(
-      authReducer(
-        { ...dummyState, signupStatus: "succeeded" },
-        signupStatusReseted
-      )
-    ).toEqual(dummyState);
+      authReducer({ ...dummyState, signupStatus: "succeeded" }, statusReset)
+    ).toEqual({ ...dummyState, loginStatus: "empty", signupStatus: "empty" });
   });
 });

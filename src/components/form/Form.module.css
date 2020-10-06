@@ -24,5 +24,13 @@
 .FormBtn {
   align-self: flex-end;
   display: inline-block;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.ErrorMsg {
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.3rem;
+  white-space: pre-wrap;
 }

@@ -9,6 +9,7 @@ export const initialState = {
   token: "",
   loginStatus: "empty",
   signupStatus: "empty",
+  signupError: null,
 };
 
 const authSlice = createSlice({
@@ -16,8 +17,9 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     stateCleaned: (state) => initialState,
-    signupStatusReseted: (state) => {
+    statusReset: (state) => {
       state.signupStatus = "empty";
+      state.loginStatus = "empty";
     },
   },
   extraReducers: {
@@ -40,11 +42,12 @@ const authSlice = createSlice({
     },
     [registerUser.rejected]: (state, action) => {
       state.signupStatus = "failed";
+      state.signupError = Object.values(action.payload)[0][0];
     },
   },
 });
 
-export const { stateCleaned, signupStatusReseted } = authSlice.actions;
+export const { stateCleaned, statusReset } = authSlice.actions;
 
 export const selectAuth = (state) => state.auth;
 

@@ -24,6 +24,7 @@ const Form = (props) => {
   return (
     <form className={styles.Form}>
       {items}
+      <div className={styles.ErrorMsg}>{props.errorMsg}</div>
       <button type="button" className={styles.FormBtn} onClick={props.submit}>
         {props.submitText}
       </button>
