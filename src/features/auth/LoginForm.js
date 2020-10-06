@@ -29,6 +29,7 @@ const LoginForm = (props) => {
           authInfo.loginStatus === "failed" ? "Wrong username or password" : ""
         }
         loading={authInfo.loginStatus === "authenticating"}
+        canSubmit={true}
       ></Form>
       {authInfo.loginStatus === "succeeded" && props.closeModal()}
     </div>

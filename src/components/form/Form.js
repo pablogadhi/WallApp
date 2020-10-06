@@ -9,7 +9,8 @@ import FormItem from "./FormItem";
  *                           used to populate the form
  * @param {function} props.submit Function to call with the submit button
  * @param {string} props.submitText Test to display on the submit button
- * @param {function} props.loading Boolean used to display de loading spinner
+ * @param {boolean} props.loading Boolean used to display de loading spinner
+ * @param {boolean} props.canSubmit Boolean used to disable the submit button when needed
  *
  */
 const Form = (props) => {
@@ -33,7 +34,7 @@ const Form = (props) => {
             type="button"
             className={styles.FormBtn}
             onClick={props.submit}
-            disabled={props.loading}
+            disabled={props.loading || !props.canSubmit}
           >
             {props.submitText}
           </button>

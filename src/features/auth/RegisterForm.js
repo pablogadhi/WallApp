@@ -69,6 +69,7 @@ const RegisterForm = (props) => {
         }
         errorMsg={evalError()}
         loading={authInfo.signupStatus === "creating"}
+        canSubmit={password === confirmPassword}
       ></Form>
       {authInfo.signupStatus === "succeeded" && close()}
     </div>
